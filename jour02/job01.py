@@ -14,9 +14,7 @@ cursor.execute("SELECT * FROM etudiants")
 
 results = cursor.fetchall()
 
-results = cursor.fetchall()
 print(results)
 
-# Fermeture de la connexion
 cursor.close()
 mydb.close()
