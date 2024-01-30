@@ -1,16 +1,16 @@
 import mysql.connector
 
 mydb = mysql.connector.connect(
-    host = "LaPlateforme",
+    host = "localhost",
     user = "root",
-    password = "F1m13I12l5",
-    database = "LaPlateforme"
+    password = "F1m13I12l5*",
+    database = "laplateforme"
 )
 
 
 cursor = mydb.cursor()
 
-cursor.execute("SELECT * FROM etudiants")
+cursor.execute("SELECT * FROM etudiant")
 
 results = cursor.fetchall()
 
