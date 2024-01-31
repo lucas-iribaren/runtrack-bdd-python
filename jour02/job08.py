@@ -12,8 +12,12 @@ class Zoo:
     
     def menu(self):
         while True:
-            choose = int(input(
-"""Bienvenue dans le programme de modification des données du zoo, veuillez entrer le chiffre correspondant à votre demande :
+            choose = int(input("""
+                                                              
+                               
+Bienvenue dans le programme de modification des données du zoo, 
+veuillez entrer le chiffre correspondant à votre demande :
+                               
     1 - Ajouter un animal au zoo
     2 - Supprimer un animal du zoo 
     3 - Modifier une information d'un animal
@@ -22,17 +26,18 @@ class Zoo:
     5 - Supprimer une cage du zoo
     6 - Modifier une information de la cage
     0 - Quitter
-    """))
+
+Votre choix:"""))
             if choose == 0:
                 print("Merci d'avoir utilisé le programme. Au revoir!")
                 break
             elif choose == 1:
                 print("Ajout d'un animal au zoo:")
-                name = input("Nom de l'animal : ")
-                race = input("Race de l'animal : ")
+                name = input("Nom de l'animal : ").capitalize()
+                race = input("Race de l'animal : ").capitalize()
                 id_cage = int(input("ID de la cage : "))
-                birthday = input("Année de naissance : ")
-                country_origin = input("Pays d'origine : ")
+                birthday = int(input("Année de naissance : "))
+                country_origin = input("Pays d'origine : ").capitalize()
                 self.add_animal(name, race, id_cage, birthday, country_origin)
             elif choose == 2:
                 print("Suppression d'un animal du zoo:")
@@ -48,14 +53,15 @@ class Zoo:
                 print("Suppression d'une cage du zoo:")
                 # Ajoutez ici le code pour la suppression d'une cage
             elif choose == 6:
-                print("Modification d'une information de la cage:")
+                print("Modification d'une information d'une cage:")
                 # Ajoutez ici le code pour la modification d'une information de la cage
             else:
                 print("Choix non valide. Veuillez entrer un chiffre entre 0 et 6.")
 
     def add_animal(self,name,race,id_cage,birthday,country_origin):
         try :
-            self.cursor.execute(f"INSERT INTO animal (name,race, id_cage, birthday, country_origin) VALUES ({name},{race}, {id_cage}, {birthday}, {country_origin})")
+            self.cursor.execute("INSERT INTO animal (name,race, id_cage, birthday, country_origin) VALUES (%s,%s,%s,%s,%s)",(name,race, id_cage, birthday, country_origin))
+            self.mydb.commit()
             print(f"L'animal '{name}' a été ajouté avec succès.")
         except ValueError:
             print("Veuillez rentrez le nom, la race, l'id de la cage, l'année de naissance et le pays d'origine")
