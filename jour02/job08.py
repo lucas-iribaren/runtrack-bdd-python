@@ -42,7 +42,7 @@ Votre choix:"""))
             elif choose == 2:
                 print("Suppression d'un animal du zoo:")
                 name_to_remove = input("Nom de l'animal à supprimer : ")
-                self.remove_animal(name_to_remove)
+                self.del_animal(name_to_remove)
             elif choose == 3:
                 print("Modification d'une information d'un animal:")
                 # Ajoutez ici le code pour la modification d'une information d'un animal
